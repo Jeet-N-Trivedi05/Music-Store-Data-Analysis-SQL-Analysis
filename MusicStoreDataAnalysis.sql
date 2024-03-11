@@ -140,6 +140,15 @@ ORDER BY milliseconds DESC;
 
 /* GET THE MOST POPULAR MUSIC GENRE IN EACH COUNTRY BY TOTAL SPENDING */
 
+SELECT COUNT(il.quantity) as purchase , g.genre_id,g.name, i.billing_country,
+ 		ROW_NUMBER() OVER (PARTITION BY i.billing_country ORDER BY COUNT(il.quantity) DESC ) AS R_NO
+	from invoice_line il
+		join invoice i on i.invoice_id = il.invoice_id 
+		join track t on il.track_id  = t.track_id 
+		join genre g on t.genre_id = g.genre_id 
+		GROUP BY g.genre_id,g.name,i.billing_country
+		ORDER BY i.billing_country, purchase desc; 
+
 WITH POPULAR_GENRE AS 
 (SELECT COUNT(il.quantity) as purchase , g.genre_id,g.name, i.billing_country,
  		ROW_NUMBER() OVER (PARTITION BY i.billing_country ORDER BY COUNT(il.quantity) DESC ) AS R_NO
@@ -154,10 +163,15 @@ SELECT * FROM POPULAR_GENRE WHERE R_NO <= 1;
 
 /* GET THE BEST COSTOMER IN EACH COUNTRY BY TOTAL SPENDING */
 
+-- cust_id, cust_name, cust_country, inv_total 
 
-
-
- 
+WITH BEST_CUS AS 
+(SELECT c.customer_id, c.first_name, i.billing_country,sum(i.total) AS 'toal_spending', 
+	ROW_NUMBER() OVER(PARTITION BY billing_country ORDER BY SUM(total) DESC) AS R_NO
+FROM invoice i
+JOIN customer c ON c.customer_id = i.customer_id
+GROUP BY c.customer_id, c.first_name, i.billing_country )
+SELECT * FROM BEST_CUS WHERE R_NO <= 1;
 
 
 

@@ -28,11 +28,15 @@ Objective: Identify the most popular music genre for each country.
 Objective: Identify the customer that has spent the most on music for each country.
 Concepts Utilized
 
+Concepts Utilised : 
+
 Group By: Aggregated data based on common attributes.
 Ranking: Identified top performers using ranking functions.
 Order By: Sorted results for better readability.
 Having Clause: Filtered aggregated results to focus on specific conditions.
 Data Source
 
+
 Database Schema: schema_diagram.png
+
 Feel free to explore the project to gain valuable insights into the Music Shop's operations! If you have any questions or suggestions, feel free to open an issue or contribute to the project. Happy querying! 🎵✨

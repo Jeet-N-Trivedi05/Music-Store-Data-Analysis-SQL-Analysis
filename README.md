@@ -31,10 +31,16 @@ Concepts Utilized
 Concepts Utilised : 
 
 Group By: Aggregated data based on common attributes.
-Ranking: Identified top performers using ranking functions.
-Order By: Sorted results for better readability.
 Having Clause: Filtered aggregated results to focus on specific conditions.
-Data Source
+Window Functions: Utilised window functions such as ROW_NUMBER(), PARTITION BY, and OVER to perform calculations over specific result sets.
+Join Operations: Combined data from multiple tables using inner and outer joins for comprehensive analysis.
+Subqueries: Employed subqueries to retrieve intermediate results for further analysis within main queries.
+Aliases: Used aliases to provide alternative names for columns or tables, improving query readability.
+Distinct: Employed DISTINCT to eliminate duplicate records and focus on unique values.
+Filtering with WHERE: Utilised WHERE clause to filter records based on specified conditions.
+WITH Clause: Employed the WITH clause to create temporary result sets for simplifying complex queries.
+Rank and DENSE_RANK: Utilised ranking functions to assign ranks to rows based on specified criteria.
+Multi-Level Joins: Conducted multi-level joins to connect disparate tables and extract comprehensive insights
 
 
 Database Schema: schema_diagram.png
